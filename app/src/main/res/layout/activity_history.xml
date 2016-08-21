@@ -7,25 +7,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ru.itis.autohelper.MainActivity">
+    tools:context="ru.itis.autohelper.HistoryActivity">
 
-    <AutoCompleteTextView
-        android:id="@+id/probeg"
+    <TextView
+        android:id="@+id/history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:text="@string/history"
+        android:textSize="30sp"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/notifications"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/probeg"
-   />
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/okay"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_below="@id/history"/>
 </RelativeLayout>

@@ -6,4 +6,6 @@
     <color name="font">#FFFFFF</color>
     <color name="background">#000000</color>
     <color name="half2">#FFA00F</color>
+    <color name="high_priority">#FF1049</color>
+    <color name="low_priority">#8FF049</color>
 </resources>

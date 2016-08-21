@@ -20,14 +20,38 @@
         android:gravity="center_horizontal"/>
 
     <TextView
+        android:id="@+id/half2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/background"
         android:text="@string/name2"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:layout_toRightOf="@id/half1"
+        android:layout_toEndOf="@id/half1"
         android:background="@color/half2"/>
 
+    <EditText
+        android:id="@+id/chooser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/half1"
+        android:hint="@string/hint1"
+        android:layout_marginTop="60dp"/>
 
+    <EditText
+        android:id="@+id/km"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chooser"
+        android:hint="@string/hint2"
+        android:layout_marginTop="60dp"
+        />
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_below="@+id/km"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/okay"
+        android:layout_alignParentRight="true"/>
 </RelativeLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.itis.autohelper.SettingsActivity">
+
+
+    <TextView
+        android:id="@+id/change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/change"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/change"
+        android:layout_marginTop="13dp"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:textColor="@color/half2"
+        android:shadowColor="@color/background"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:gravity="center_horizontal"
+        android:text="@string/detail"/>
+
+
+    <CheckBox
+        android:id="@+id/cb_first"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        />
+
+
+    <EditText
+        android:id="@+id/et_number1"
+        android:layout_toEndOf="@id/cb_first"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/detail"
+        android:inputType="numberSigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:minWidth="45dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_km"
+        android:layout_marginTop="45dp"
+        android:layout_below="@id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/et_number1"
+        android:text="@string/km"/>
+
+    <CheckBox
+        android:id="@+id/cb_second"
+        android:layout_below="@id/cb_first"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        />
+
+
+    <EditText
+        android:id="@+id/et_number2"
+        android:inputType="numberSigned"
+        android:layout_below="@id/cb_first"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/cb_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="45dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_weeks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/tv_km"
+        android:layout_toEndOf="@id/et_number2"
+        android:text="@string/weeks"/>
+
+</RelativeLayout>
