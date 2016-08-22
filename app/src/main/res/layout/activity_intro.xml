@@ -9,37 +9,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.itis.autohelper.IntroActivity">
 
-    <TextView
-        android:id="@+id/half1"
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/font"
-        android:text="@string/name1"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"/>
-
-    <TextView
-        android:id="@+id/half2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/background"
-        android:text="@string/name2"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:layout_toEndOf="@id/half1"
-        android:background="@color/half2"/>
+        android:src="@drawable/logo"
+        />
 
     <EditText
         android:id="@+id/chooser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/half1"
+        android:layout_below="@id/logo"
         android:hint="@string/hint1"
         android:layout_marginTop="60dp"/>
 
     <EditText
-        android:id="@+id/km"
+        android:id="@+id/km_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/chooser"
@@ -49,7 +35,7 @@
 
     <Button
         android:id="@+id/confirm"
-        android:layout_below="@+id/km"
+        android:layout_below="@+id/km_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/okay"
