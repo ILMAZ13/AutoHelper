@@ -3,6 +3,9 @@ package ru.itis.autohelper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ILMAZ on 23.08.2016.
  */
@@ -25,35 +28,35 @@ public class Saver {
         ed.putString("name", name);
         ed.putInt("PC", 10);
         ed.putString("P1N", "Моторное масло");
-        ed.putString("P1T", "24");
-        ed.putString("P1K", "10000");
+        ed.putInt("P1T", 24);
+        ed.putInt("P1K", 10000);
         ed.putString("P2N", "Свечи зажигания");
-        ed.putString("P2T", "36");
-        ed.putString("P2K", "20000");
+        ed.putInt("P2T", 36);
+        ed.putInt("P2K", 20000);
         ed.putString("P3N", "Сход-развал");
-        ed.putString("P3T", "0");
-        ed.putString("P3K", "10000");
+        ed.putInt("P3T", 0);
+        ed.putInt("P3K", 10000);
         ed.putString("P4N", "Задние тормозные колодки");
-        ed.putString("P4T", "36");
-        ed.putString("P4K", "30000");
+        ed.putInt("P4T", 36);
+        ed.putInt("P4K", 30000);
         ed.putString("P5N", "Топливный фильтр");
-        ed.putString("P5T", "24");
-        ed.putString("P5K", "30000");
+        ed.putInt("P5T", 24);
+        ed.putInt("P5K", 30000);
         ed.putString("P6N", "Воздушный фильтр");
-        ed.putString("P6T", "24");
-        ed.putString("P6K", "30000");
+        ed.putInt("P6T", 24);
+        ed.putInt("P6K", 30000);
         ed.putString("P7N", "Передние тормозные колодки");
-        ed.putString("P7T", "36");
-        ed.putString("P7K", "30000");
+        ed.putInt("P7T", 36);
+        ed.putInt("P7K", 30000);
         ed.putString("P8N", "Антифриз");
-        ed.putString("P8T", "36");
-        ed.putString("P8K", "60000");
+        ed.putInt("P8T", 36);
+        ed.putInt("P8K", 60000);
         ed.putString("P9N", "Тормозная жидкость");
-        ed.putString("P9T", "36");
-        ed.putString("P9K", "60000");
+        ed.putInt("P9T", 36);
+        ed.putInt("P9K", 60000);
         ed.putString("P10N", "Ремень ГРМ и натяжные ролики");
-        ed.putString("P10T", "36");
-        ed.putString("P10K", "60000");
+        ed.putInt("P10T", 36);
+        ed.putInt("P10K", 60000);
         ed.commit();
     }
 
@@ -78,4 +81,22 @@ public class Saver {
     public boolean isAlreadyFilled(){
         return sPPref.contains("name");
     }
+
+    public ArrayList<NotificationItem> getParametresList(){
+        ArrayList<NotificationItem> arr = new ArrayList<>();
+        NotificationItem not;
+        String name;
+        int time;
+        int km;
+        int count = sPPref.getInt("PC", 0);
+        for (int i = 1; i <= count; i++) {
+            name = sPPref.getString("P"+i+"N", "Error");
+            time = sPPref.getInt("P"+i+"T", -1);
+            km = sPPref.getInt("P"+i+"K", -1);
+            not = new NotificationItem(name,time,km);
+            arr.add(not);
+        }
+        return arr;
+    }
+
 }
