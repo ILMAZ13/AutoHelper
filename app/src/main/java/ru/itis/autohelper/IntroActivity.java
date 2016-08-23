@@ -1,10 +1,14 @@
 package ru.itis.autohelper;
 
+import android.content.Intent;
+import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -22,5 +26,17 @@ public class IntroActivity extends AppCompatActivity {
         et_chooser = (EditText) findViewById(R.id.chooser);
         et_input_km = (EditText) findViewById(R.id.km_input);
         btn_proceed = (Button) findViewById(R.id.confirm);
+
+        btn_proceed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try{
+                    int km = Integer.parseInt(et_input_km.getText().toString());
+                }catch (NumberFormatException e){
+                    Toast.makeText(IntroActivity.this, "Invalid number format!!!", Toast.LENGTH_LONG).show();
+                    et_input_km.setText("");
+                }
+            }
+        });
     }
 }
