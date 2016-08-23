@@ -38,8 +38,20 @@ public class IntroActivity extends AppCompatActivity {
                     sPref = getPreferences(MODE_PRIVATE);
                     SharedPreferences.Editor ed = sPref.edit();
                     ed.putString("name", name);
-                    ed.putString(name+"HK", "0");
-                    //ToDo: there
+                    ed.putString("HC", "0");
+                    ed.putString("P1N", "Моторное масло");
+                    ed.putString("P1T", "24");
+                    ed.putString("P1K", "10000");
+                    ed.putString("P2N", "Свечи зажигания");
+                    ed.putString("P2T", "36");
+                    ed.putString("P2K", "20000");
+                    ed.putString("P2N", "Свечи зажигания");
+                    ed.putString("P2T", "36");
+                    ed.putString("P2K", "20000");
+                    ed.putString("P2N", "Свечи зажигания");
+                    ed.putString("P2T", "36");
+                    ed.putString("P2K", "20000");
+
                     ed.commit();
                     Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
                     startActivity(intentToMain);
