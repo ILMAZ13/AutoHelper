@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center_horizontal"
+        android:textColor="@color/background"
         android:background="@color/low_priority"
         />
     <TextView
@@ -15,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center_horizontal"
+        android:textColor="@color/background"
         android:background="@color/low_priority"
         />
     <View
