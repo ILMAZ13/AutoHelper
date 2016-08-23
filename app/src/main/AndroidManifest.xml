@@ -3,8 +3,8 @@
     package="ru.itis.autohelper">
 
     <application
-        android:fullBackupContent="true"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -19,7 +19,9 @@
         <activity android:name=".IntroActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".ListActivity"/>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".DetailEditActivity" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>
