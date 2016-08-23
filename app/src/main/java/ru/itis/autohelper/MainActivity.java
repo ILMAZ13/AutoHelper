@@ -1,5 +1,6 @@
 package ru.itis.autohelper;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +18,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        boolean filled = false;   //ToDo: Replace to filled test
+        if(!filled) {
+            Intent intentToIntro = new Intent(MainActivity.this, IntroActivity.class);
+            startActivity(intentToIntro);
+        }
+
         tv_probeg = (TextView) findViewById(R.id.probeg);
         rv_notifications = (RecyclerView) findViewById(R.id.notifications);
         btn_confirm = (Button) findViewById(R.id.confirm);
+
 
     }
 }
