@@ -1,6 +1,7 @@
 package ru.itis.autohelper;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ public class IntroActivity extends AppCompatActivity {
     EditText et_chooser;
     EditText et_input_km;
     Button btn_proceed;
+    SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,15 @@ public class IntroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try{
                     int km = Integer.parseInt(et_input_km.getText().toString());
+                    String name = et_chooser.getText().toString();
+                    sPref = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor ed = sPref.edit();
+                    ed.putString("name", name);
+                    ed.putString(name+"HK", "0");
+                    //ToDo: there
+                    ed.commit();
+                    Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
+                    startActivity(intentToMain);
                 }catch (NumberFormatException e){
                     Toast.makeText(IntroActivity.this, "Invalid number format!!!", Toast.LENGTH_LONG).show();
                     et_input_km.setText("");
