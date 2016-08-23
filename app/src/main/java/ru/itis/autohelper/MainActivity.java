@@ -1,6 +1,7 @@
 package ru.itis.autohelper;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,9 +12,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    public static Saver saver;
     TextView tv_probeg;
     RecyclerView rv_notifications;
     Button btn_confirm;
+    SharedPreferences sPref;
 
 
     @Override
@@ -21,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        boolean filled = false;   //ToDo: Replace to filled test
+        saver = new Saver(this);
+
+        boolean filled = saver.isAlreadyFilled();
         if(!filled) {
             Intent intentToIntro = new Intent(MainActivity.this, IntroActivity.class);
             startActivity(intentToIntro);
