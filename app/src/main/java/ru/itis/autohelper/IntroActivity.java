@@ -23,4 +23,5 @@ public class IntroActivity extends AppCompatActivity {
         et_input_km = (EditText) findViewById(R.id.km_input);
         btn_proceed = (Button) findViewById(R.id.confirm);
     }
+
 }
