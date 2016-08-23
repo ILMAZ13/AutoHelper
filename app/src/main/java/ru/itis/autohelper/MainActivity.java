@@ -44,14 +44,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private ArrayList<NotificationItem> fillNotifications() {
-        ArrayList<NotificationItem> notifications = new ArrayList<>();
+        //ToDO: replace to test by data and km
+        /*ArrayList<NotificationItem> notifications = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             NotificationItem notification= new NotificationItem(
                     "detail"+i,
-                    "message"+i
+                    i,
+                    i*15
             );
             notifications.add(notification);
         }
-        return notifications;
+        return notifications;*/
+
+        return MainActivity.saver.getParametresList();
     }
 }

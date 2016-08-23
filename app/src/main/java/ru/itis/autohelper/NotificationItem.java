@@ -5,19 +5,26 @@ package ru.itis.autohelper;
  */
 public class NotificationItem {
     private String detail_name;
-    private String message;
+    private int time;
+    private int km;
 
 
-    public NotificationItem (String detail_name, String message) {
-        this.message = message;
+    public NotificationItem(String detail_name, int time, int km) {
         this.detail_name = detail_name;
+        this.time = time;
+        this.km = km;
     }
 
     public String getDetail_name() {
         return detail_name;
     }
 
-    public String getMessage() {
-        return message;
+    public int getTime() {
+        return time;
     }
+
+    public int getKm() {
+        return km;
+    }
+
 }

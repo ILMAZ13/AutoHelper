@@ -35,12 +35,15 @@ public class IntroActivity extends AppCompatActivity {
                 try{
                     int km = Integer.parseInt(et_input_km.getText().toString());
                     String name = et_chooser.getText().toString();
+                    if(name.length()>0) {
+                        MainActivity.saver.fillStandart(name);
+                        MainActivity.saver.addKM(km);
 
-                    MainActivity.saver.fillStandart(name);
-                    MainActivity.saver.addKM(km);
-
-                    Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
-                    startActivity(intentToMain);
+                        Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
+                        startActivity(intentToMain);
+                    } else {
+                        Toast.makeText(IntroActivity.this, "Введите наименование машины!!!",Toast.LENGTH_LONG);
+                    }
                 }catch (NumberFormatException e){
                     Toast.makeText(IntroActivity.this, "Invalid number format!!!", Toast.LENGTH_LONG).show();
                     et_input_km.setText("");
