@@ -11,6 +11,7 @@
 
     <AutoCompleteTextView
         android:id="@+id/probeg"
+        android:hint="@string/hint2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
