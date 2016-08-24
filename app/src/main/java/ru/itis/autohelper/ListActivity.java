@@ -13,6 +13,8 @@ public class ListActivity extends Activity {
     RecyclerView rv_list;
     FloatingActionButton btn_add;
 
+    private TextView tvName_detail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,8 @@ public class ListActivity extends Activity {
         tv_todolist = (TextView) findViewById(R.id.todolist);
         rv_list = (RecyclerView) findViewById(R.id.rv_list);
         btn_add = (FloatingActionButton) findViewById(R.id.btn_add);
+
+        tvName_detail = (TextView) findViewById(R.id.name_detail);
 
         NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getParametresList(), getFragmentManager());
         rv_list.setLayoutManager(new LinearLayoutManager(rv_list.getContext()));
