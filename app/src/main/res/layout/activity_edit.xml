@@ -10,7 +10,12 @@
     tools:context="ru.itis.autohelper.EditActivity"
     android:orientation="vertical">
 
-
+    <TextView
+        android:id="@+id/name_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="lala"
+        />
     <EditText
         android:id="@+id/kilometers_edit"
         android:inputType="number"

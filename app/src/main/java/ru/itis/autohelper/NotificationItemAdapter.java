@@ -2,8 +2,6 @@ package ru.itis.autohelper;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
-import android.content.Context;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +40,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dlg.show( fragmentManager,"dlg");
-
+                dlg.show(fragmentManager,"dlg");
             }
         });
     }
