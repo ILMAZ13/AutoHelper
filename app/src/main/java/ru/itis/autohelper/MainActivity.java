@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -42,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
         btn_confirm = (Button) findViewById(R.id.confirm);
         btn_cancel = (Button) findViewById(R.id.cancel_action);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ToDo erase all data and jump to intro
+            }
+        });
 
         Intent intentFromIntro = getIntent();
         tv_probeg.setText(intentFromIntro.getStringExtra("km"));
