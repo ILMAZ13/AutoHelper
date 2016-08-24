@@ -43,20 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
         btn_confirm = (Button) findViewById(R.id.confirm);
         btn_cancel = (Button) findViewById(R.id.cancel_action);
-
-        Intent intentFromIntro = getIntent();
-        tv_probeg.setText(intentFromIntro.getStringExtra("km"));
-
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saver.clear();
-                Intent intentToIntro = new Intent(MainActivity.this, IntroActivity.class);
-                startActivity(intentToIntro);
+                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
 
-
+        Intent intentFromIntro = getIntent();
+        tv_probeg.setText(intentFromIntro.getStringExtra("km"));
     }
 
     private ArrayList<NotificationItem> fillNotifications() {
