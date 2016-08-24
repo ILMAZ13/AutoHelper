@@ -24,8 +24,9 @@ public class Saver {
         ed = sPPref.edit();
     }
 
-    public void fillStandart(String name){
+    public void fillStandart(String name, int km){
         ed.putString("name", name);
+        addKM(km);
         ed.putInt("PC", 10);
         ed.putString("P1N", "Моторное масло");
         ed.putInt("P1T", 24);
@@ -58,6 +59,9 @@ public class Saver {
         ed.putInt("P10T", 36);
         ed.putInt("P10K", 60000);
         ed.commit();
+        SharedPreferences.Editor hEd = sHPref.edit();
+        hEd.putInt("HC", 0);
+        hEd.commit();
     }
 
     public void addKM(int km){

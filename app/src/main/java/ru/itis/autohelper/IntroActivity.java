@@ -36,8 +36,7 @@ public class IntroActivity extends AppCompatActivity {
                     int km = Integer.parseInt(et_input_km.getText().toString());
                     String name = et_chooser.getText().toString();
                     if(name.length()>0) {
-                        MainActivity.saver.fillStandart(name);
-                        MainActivity.saver.addKM(km);
+                        MainActivity.saver.fillStandart(name, km);
 
                         Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
                         startActivity(intentToMain);
