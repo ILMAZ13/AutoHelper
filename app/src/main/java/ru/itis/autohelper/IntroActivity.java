@@ -39,6 +39,7 @@ public class IntroActivity extends AppCompatActivity {
                         MainActivity.saver.fillStandart(name, km);
 
                         Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
+                        intentToMain.putExtra("km", et_input_km.getText());
                         startActivity(intentToMain);
                     } else {
                         Toast.makeText(IntroActivity.this, "Введите наименование машины!!!",Toast.LENGTH_LONG);

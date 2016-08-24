@@ -12,6 +12,7 @@
     <AutoCompleteTextView
         android:id="@+id/probeg"
         android:hint="@string/hint2"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -28,5 +29,14 @@
         android:layout_height="wrap_content"
         android:text="@string/okay"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentEnd="true"
+/>
+    <Button
+        android:id="@+id/cancel_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сбросить"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        />
 </RelativeLayout>
