@@ -11,21 +11,19 @@ import java.util.List;
  */
 public class Saver {
     private static final String PARAM_NAME = "Parametres";
-    private static final String HISTORY_NAME = "History";
     private Context context;
     private SharedPreferences sPPref;
     private SharedPreferences.Editor ed;
-    private SharedPreferences sHPref;
 
     public Saver(Context context) {
         this.context = context;
         sPPref = context.getSharedPreferences(PARAM_NAME, Context.MODE_PRIVATE);
-        sHPref = context.getSharedPreferences(HISTORY_NAME, Context.MODE_PRIVATE);
         ed = sPPref.edit();
     }
 
-    public void fillStandart(String name){
+    public void fillStandart(String name, int km){
         ed.putString("name", name);
+        addKM(km);
         ed.putInt("PC", 10);
         ed.putString("P1N", "Моторное масло");
         ed.putInt("P1T", 24);
@@ -57,6 +55,7 @@ public class Saver {
         ed.putString("P10N", "Ремень ГРМ и натяжные ролики");
         ed.putInt("P10T", 36);
         ed.putInt("P10K", 60000);
+        ed.putInt("HC", 0);
         ed.commit();
     }
 
@@ -66,7 +65,7 @@ public class Saver {
     }
 
     public int getKM(){
-        return sPPref.getInt("KM", -1);
+        return sPPref.getInt("KM", 0);
     }
 
     public void addParametr(String name, int time, int km){
@@ -76,6 +75,7 @@ public class Saver {
         ed.putInt("P"+ Integer.toString(count)+ "T", time);
         ed.putInt("P"+ Integer.toString(count)+ "K", km);
         ed.putInt("PC", count);
+        ed.commit();
     }
 
     public boolean isAlreadyFilled(){
@@ -91,12 +91,48 @@ public class Saver {
         int count = sPPref.getInt("PC", 0);
         for (int i = 1; i <= count; i++) {
             name = sPPref.getString("P"+i+"N", "Error");
-            time = sPPref.getInt("P"+i+"T", -1);
-            km = sPPref.getInt("P"+i+"K", -1);
+            time = sPPref.getInt("P"+i+"T", 0);
+            km = sPPref.getInt("P"+i+"K", 0);
             not = new NotificationItem(name,time,km);
             arr.add(not);
         }
         return arr;
+    }
+
+    public ArrayList<NotificationItem> getHistoryList(){
+        ArrayList<NotificationItem> arr = new ArrayList<>();
+        NotificationItem not;
+        String name;
+        int time;
+        int km;
+        int count = sPPref.getInt("HC", 0);
+        for (int i = 1; i <= count; i++) {
+            name = sPPref.getString("H"+i+"N", "Error");
+            time = sPPref.getInt("H"+i+"T", 0);
+            km = sPPref.getInt("H"+i+"K", 0);
+            not = new NotificationItem(name,time,km);
+            arr.add(not);
+        }
+        return arr;
+    }
+
+    public void addHistory(String name, int time, int km){
+        int count = sPPref.getInt("HC", 0);
+        count++;
+        ed.putString("H"+ Integer.toString(count)+ "N", name);
+        ed.putInt("H"+ Integer.toString(count)+ "T", time);
+        ed.putInt("H"+ Integer.toString(count)+ "K", km);
+        ed.putInt("HC", count);
+        ed.commit();
+    }
+
+    public void clear(){
+        ed.remove("name");
+        ed.remove("KM");
+        ed.putInt("HC", 0);
+        ed.putInt("PC", 0);
+        ed.commit();
+
     }
 
 }
