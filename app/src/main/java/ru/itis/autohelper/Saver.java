@@ -11,16 +11,13 @@ import java.util.List;
  */
 public class Saver {
     private static final String PARAM_NAME = "Parametres";
-    private static final String HISTORY_NAME = "History";
     private Context context;
     private SharedPreferences sPPref;
     private SharedPreferences.Editor ed;
-    private SharedPreferences sHPref;
 
     public Saver(Context context) {
         this.context = context;
         sPPref = context.getSharedPreferences(PARAM_NAME, Context.MODE_PRIVATE);
-        sHPref = context.getSharedPreferences(HISTORY_NAME, Context.MODE_PRIVATE);
         ed = sPPref.edit();
     }
 
@@ -58,10 +55,8 @@ public class Saver {
         ed.putString("P10N", "Ремень ГРМ и натяжные ролики");
         ed.putInt("P10T", 36);
         ed.putInt("P10K", 60000);
+        ed.putInt("HC", 0);
         ed.commit();
-        SharedPreferences.Editor hEd = sHPref.edit();
-        hEd.putInt("HC", 0);
-        hEd.commit();
     }
 
     public void addKM(int km){
@@ -70,7 +65,7 @@ public class Saver {
     }
 
     public int getKM(){
-        return sPPref.getInt("KM", -1);
+        return sPPref.getInt("KM", 0);
     }
 
     public void addParametr(String name, int time, int km){
@@ -80,6 +75,7 @@ public class Saver {
         ed.putInt("P"+ Integer.toString(count)+ "T", time);
         ed.putInt("P"+ Integer.toString(count)+ "K", km);
         ed.putInt("PC", count);
+        ed.commit();
     }
 
     public boolean isAlreadyFilled(){
@@ -109,11 +105,11 @@ public class Saver {
         String name;
         int time;
         int km;
-        int count = sHPref.getInt("HC", 0);
+        int count = sPPref.getInt("HC", 0);
         for (int i = 1; i <= count; i++) {
-            name = sHPref.getString("H"+i+"N", "Error");
-            time = sHPref.getInt("H"+i+"T", 0);
-            km = sHPref.getInt("H"+i+"K", 0);
+            name = sPPref.getString("H"+i+"N", "Error");
+            time = sPPref.getInt("H"+i+"T", 0);
+            km = sPPref.getInt("H"+i+"K", 0);
             not = new NotificationItem(name,time,km);
             arr.add(not);
         }
@@ -121,13 +117,13 @@ public class Saver {
     }
 
     public void addHistory(String name, int time, int km){
-        int count = sHPref.getInt("HC", 0);
-        SharedPreferences.Editor ed = sHPref.edit();
+        int count = sPPref.getInt("HC", 0);
         count++;
         ed.putString("H"+ Integer.toString(count)+ "N", name);
         ed.putInt("H"+ Integer.toString(count)+ "T", time);
         ed.putInt("H"+ Integer.toString(count)+ "K", km);
         ed.putInt("HC", count);
+        ed.commit();
     }
 
 }
