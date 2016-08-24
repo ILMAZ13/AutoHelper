@@ -11,4 +11,6 @@
     <string name="km">км</string>
     <string name="weeks">недель</string>
     <string name="todolist">Список работ</string>
+    <string name="settings">Задать дату и пробег</string>
+
 </resources>
