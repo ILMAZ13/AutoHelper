@@ -91,12 +91,39 @@ public class Saver {
         int count = sPPref.getInt("PC", 0);
         for (int i = 1; i <= count; i++) {
             name = sPPref.getString("P"+i+"N", "Error");
-            time = sPPref.getInt("P"+i+"T", -1);
-            km = sPPref.getInt("P"+i+"K", -1);
+            time = sPPref.getInt("P"+i+"T", 0);
+            km = sPPref.getInt("P"+i+"K", 0);
             not = new NotificationItem(name,time,km);
             arr.add(not);
         }
         return arr;
+    }
+
+    public ArrayList<NotificationItem> getHistoryList(){
+        ArrayList<NotificationItem> arr = new ArrayList<>();
+        NotificationItem not;
+        String name;
+        int time;
+        int km;
+        int count = sHPref.getInt("HC", 0);
+        for (int i = 1; i <= count; i++) {
+            name = sHPref.getString("H"+i+"N", "Error");
+            time = sHPref.getInt("H"+i+"T", 0);
+            km = sHPref.getInt("H"+i+"K", 0);
+            not = new NotificationItem(name,time,km);
+            arr.add(not);
+        }
+        return arr;
+    }
+
+    public void addHistory(String name, int time, int km){
+        int count = sHPref.getInt("HC", 0);
+        SharedPreferences.Editor ed = sHPref.edit();
+        count++;
+        ed.putString("H"+ Integer.toString(count)+ "N", name);
+        ed.putInt("H"+ Integer.toString(count)+ "T", time);
+        ed.putInt("H"+ Integer.toString(count)+ "K", km);
+        ed.putInt("HC", count);
     }
 
 }
