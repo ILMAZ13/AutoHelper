@@ -126,4 +126,13 @@ public class Saver {
         ed.commit();
     }
 
+    public void clear(){
+        ed.remove("name");
+        ed.remove("KM");
+        ed.putInt("HC", 0);
+        ed.putInt("PC", 0);
+        ed.commit();
+
+    }
+
 }
