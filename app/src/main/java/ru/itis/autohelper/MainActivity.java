@@ -45,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         btn_cancel = (Button) findViewById(R.id.cancel_action);
         getMenuInflater();
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saver.clear();
-                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
-        });
+//        btn_cancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                saver.clear();
+//                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                startActivity(intent);
+//            }
+//        });
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override

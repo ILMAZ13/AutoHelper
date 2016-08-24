@@ -3,7 +3,7 @@
     <string name="name1">AU</string>
     <string name="name2">TO</string>
     <string name="hint1">Введите марку машины</string>
-    <string name="hint2">Введите пробег</string>
+    <string name="hint2">000000</string>
     <string name="okay">Далее</string>
     <string name="change">Изменить</string>
     <string name="detail">Название</string>
