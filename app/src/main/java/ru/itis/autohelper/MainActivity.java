@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 saver.clear();
                 Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
