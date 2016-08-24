@@ -10,7 +10,6 @@ import android.view.ViewGroup;
  * Created by Admin on 23.08.2016.
  */
 public class SelectDialog extends DialogFragment implements View.OnClickListener {
-
     private String detail_name;
     private String km;
 
