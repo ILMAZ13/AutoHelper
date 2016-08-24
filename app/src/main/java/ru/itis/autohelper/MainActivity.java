@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tv_probeg = (TextView) findViewById(R.id.probeg);
         rv_notifications = (RecyclerView) findViewById(R.id.notifications);
         rv_notifications.setLayoutManager(new LinearLayoutManager(rv_notifications.getContext()));
-        NotificationItemAdapter adapter = new NotificationItemAdapter(fillNotifications());
+        NotificationItemAdapter adapter = new NotificationItemAdapter(fillNotifications(), getFragmentManager());
         rv_notifications.setAdapter(adapter);
 
         btn_confirm = (Button) findViewById(R.id.confirm);
