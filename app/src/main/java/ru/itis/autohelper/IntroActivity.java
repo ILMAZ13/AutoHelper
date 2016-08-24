@@ -42,7 +42,7 @@ public class IntroActivity extends AppCompatActivity {
                         intentToMain.putExtra("km", et_input_km.getText());
                         startActivity(intentToMain);
                     } else {
-                        Toast.makeText(IntroActivity.this, "Введите наименование машины!!!",Toast.LENGTH_LONG);
+                        Toast.makeText(IntroActivity.this, "Введите наименование машины!!!",Toast.LENGTH_LONG).show();
                     }
                 }catch (NumberFormatException e){
                     Toast.makeText(IntroActivity.this, "Invalid number format!!!", Toast.LENGTH_LONG).show();

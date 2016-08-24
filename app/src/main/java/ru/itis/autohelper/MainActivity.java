@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ToDo erase all data and jump to intro
+                saver.clear();
+                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+                startActivity(intent);
             }
         });
 
