@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Intent intentFromIntro = getIntent();
-        tv_probeg.setText(intentFromIntro.getStringExtra("km"));
+        tv_probeg.setText(Integer.toString(saver.getKM()));
     }
 
     @Override
@@ -86,6 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return notifications;*/
 
-        return MainActivity.saver.getParametresList();
+        return MainActivity.saver.getHistoryList();
     }
 }

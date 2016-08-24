@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationItemAdapter.NotificationViewHolder> {
-
+    public static String nameOfDetail;
     private ArrayList<NotificationItem> notifications;
     DialogFragment dlg;
     FragmentManager fragmentManager;
@@ -40,6 +40,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                nameOfDetail = notification.getDetail_name();
                 dlg.show(fragmentManager,"dlg");
             }
         });
