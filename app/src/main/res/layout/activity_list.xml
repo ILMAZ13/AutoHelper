@@ -29,8 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/add_3138"
-        android:background="@color/background"/>
+        android:src="@drawable/ic_add_white_48dp"/>
 
 
 </RelativeLayout>

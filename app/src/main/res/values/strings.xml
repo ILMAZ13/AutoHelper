@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AutoHelper</string>
+    <string name="app_name">Авто помощник</string>
     <string name="name1">AU</string>
     <string name="name2">TO</string>
     <string name="hint1">Введите марку машины</string>
@@ -12,5 +12,6 @@
     <string name="weeks">недель</string>
     <string name="todolist">Список работ</string>
     <string name="settings">Задать дату и пробег</string>
+    <string name="clear">Сбросить</string>
 
 </resources>

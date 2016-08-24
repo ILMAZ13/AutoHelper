@@ -2,7 +2,6 @@ package ru.itis.autohelper;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
