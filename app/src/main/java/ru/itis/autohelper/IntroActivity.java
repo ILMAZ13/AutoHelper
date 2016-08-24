@@ -2,7 +2,6 @@ package ru.itis.autohelper;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,7 +38,7 @@ public class IntroActivity extends AppCompatActivity {
                         MainActivity.saver.fillStandart(name, km);
 
                         Intent intentToMain = new Intent(IntroActivity.this, MainActivity.class);
-                        intentToMain.putExtra("km", et_input_km.getText());
+                        intentToMain.putExtra("km", et_input_km.getText().toString());
                         startActivity(intentToMain);
                     } else {
                         Toast.makeText(IntroActivity.this, "Введите наименование машины!!!",Toast.LENGTH_LONG).show();
