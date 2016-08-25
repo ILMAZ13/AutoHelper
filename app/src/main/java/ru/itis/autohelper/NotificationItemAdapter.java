@@ -51,6 +51,8 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
             public boolean onLongClick(View view) {
                 Intent intent = new Intent(view.getContext(), SettingsActivity.class);
                 intent.putExtra("name", notification.getDetail_name());
+                intent.putExtra("km", notification.getKm());
+                intent.putExtra("time",notification.getTime());
                 view.getContext().startActivity(intent);
                 return true;
             }

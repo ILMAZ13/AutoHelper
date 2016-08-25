@@ -105,6 +105,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        String km = intent.getStringExtra("km");
+        String time = intent.getStringExtra("time");
         et_detail.setText(name);
+        et_km.setText(km);
+        et_weeks.setText(time);
     }
 }
