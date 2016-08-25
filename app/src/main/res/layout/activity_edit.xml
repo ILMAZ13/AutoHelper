@@ -32,13 +32,18 @@
         android:layout_height="wrap_content"
         android:hint="Дата на момент замены:"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/save"
-        app:fabSize="normal"
-        android:src="@drawable/done"
-        android:layout_gravity="right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/save"
+            app:fabSize="normal"
+            android:src="@drawable/done"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
