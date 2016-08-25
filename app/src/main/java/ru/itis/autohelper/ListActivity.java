@@ -38,7 +38,7 @@ public class ListActivity extends Activity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListActivity.this, EditActivity.class);
+                Intent intent = new Intent(ListActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });

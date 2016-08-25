@@ -9,7 +9,7 @@
     <string name="detail">Название</string>
     <string name="history">Журнал работ</string>
     <string name="km">км</string>
-    <string name="weeks">недель</string>
+    <string name="weeks">мес.</string>
     <string name="todolist">Список работ</string>
     <string name="settings">Задать дату и пробег</string>
     <string name="clear">Сбросить</string>

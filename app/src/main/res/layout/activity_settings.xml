@@ -34,7 +34,7 @@
         android:shadowDy="1"
         android:shadowRadius="2"
         android:gravity="center_horizontal"
-        android:text="@string/detail"/>
+        android:hint="@string/detail"/>
 
 
     <CheckBox
