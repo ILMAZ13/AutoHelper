@@ -42,14 +42,6 @@ public class ListActivity extends Activity {
                 startActivity(intent);
             }
         });
-        btn_add.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ListActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
 
