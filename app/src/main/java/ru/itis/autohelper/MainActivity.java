@@ -1,8 +1,10 @@
 package ru.itis.autohelper;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -15,14 +17,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
     public static Saver saver;
     AutoCompleteTextView tv_probeg;
     RecyclerView rv_notifications;
     FloatingActionButton btn_confirm;
+    ArrayList<NotificationItem> notList;
 
 
     @Override
@@ -31,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         saver = new Saver(this);
+
+        notList = new ArrayList<>();
+        fillNotifications(notList);
 
         boolean filled = saver.isAlreadyFilled();
         if(!filled) {
@@ -42,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         rv_notifications = (RecyclerView) findViewById(R.id.notifications);
         rv_notifications.setLayoutManager(new LinearLayoutManager(rv_notifications.getContext()));
 
-        NotificationItemAdapter adapter = new NotificationItemAdapter(fillNotifications(), getFragmentManager());
+        NotificationItemAdapter adapter = new NotificationItemAdapter(notList, getFragmentManager());
         rv_notifications.setAdapter(adapter);
 
         btn_confirm = (FloatingActionButton) findViewById(R.id.confirm);
@@ -58,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saver.addKM(Integer.parseInt(tv_probeg.getText().toString()));
                 Intent intent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(intent);
             }
@@ -87,19 +99,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private ArrayList<NotificationItem> fillNotifications() {
+    private void fillNotifications(ArrayList<NotificationItem> not) {
         //ToDO: replace to test by data and km
-        /*ArrayList<NotificationItem> notifications = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            NotificationItem notification= new NotificationItem(
-                    "detail"+i,
-                    i,
-                    i*15
-            );
-            notifications.add(notification);
-        }
-        return notifications;*/
+        ArrayList<NotificationItem> parametres = saver.getParametresList();
+        ArrayList<NotificationItem> history = saver.getHistoryList();
 
-        return new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        NotificationItem now = new NotificationItem("", day+"."+month+"."+year, saver.getKM());
+        boolean flag = false;
+        for(NotificationItem it1 : parametres){
+            for(NotificationItem it2 : history){
+                if(it1.getDetail_name().equals(it2.getDetail_name())){
+                    flag = true;
+                    //ToDo: Finish him
+                }
+            }
+        }
+
     }
 }

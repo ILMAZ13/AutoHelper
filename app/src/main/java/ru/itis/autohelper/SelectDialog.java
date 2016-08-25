@@ -12,10 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class SelectDialog extends DialogFragment {
     private EditText km;
     private EditText time;
     private FloatingActionButton btn_save;
+    private Calendar calendar;
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 
@@ -24,20 +27,24 @@ public class SelectDialog extends DialogFragment {
         km = (EditText) v.findViewById(R.id.kilometers_edit);
         time = (EditText) v.findViewById(R.id.date_edit);
         km.setText(Integer.toString(MainActivity.saver.getKM()));
+        calendar = Calendar.getInstance();
+        time.setText(calendar.get(Calendar.DAY_OF_MONTH)+"."+ (calendar.get(Calendar.MONTH)+1)+"."+calendar.get(Calendar.YEAR));
         btn_save = (FloatingActionButton) v.findViewById(R.id.save);
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            try {
                 int temp = Integer.parseInt(km.getText().toString());
                 if(temp > MainActivity.saver.getKM()){
                     MainActivity.saver.addKM(temp);
                 }
-                try {
-                    MainActivity.saver.addHistory(NotificationItemAdapter.nameOfDetail, Integer.parseInt(time.getText().toString()), temp);
-                    dismiss();
-                }catch (NumberFormatException e){
-                    time.setText("0");
-                }
+                MainActivity.saver.addHistory(NotificationItemAdapter.nameOfDetail, time.getText().toString(), temp);
+                dismiss();
+            }catch (NumberFormatException e){
+                time.setText(calendar.get(Calendar.DAY_OF_MONTH)+"."+ (calendar.get(Calendar.MONTH)+1)+"."+calendar.get(Calendar.YEAR));
+                km.setText(Integer.toString(MainActivity.saver.getKM()));
+                Toast.makeText(getActivity(), "Неверный ввод", Toast.LENGTH_LONG).show();
+            }
             }
         });
 
