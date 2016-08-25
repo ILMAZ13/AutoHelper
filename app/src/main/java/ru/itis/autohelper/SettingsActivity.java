@@ -44,8 +44,30 @@ public class SettingsActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
 
-        btn_save.setOnClickListener(new View.OnClickListener(){
+        et_km.setEnabled(false);
+        et_weeks.setEnabled(false);
 
+        cb_first.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (et_km.isEnabled()){
+                    et_km.setEnabled(false);
+                }
+                else et_km.setEnabled(true);
+            }
+        });
+
+        cb_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (et_weeks.isEnabled()){
+                    et_weeks.setEnabled(false);
+                }
+                else et_weeks.setEnabled(true);
+            }
+        });
+
+        btn_save.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 int km=0;
