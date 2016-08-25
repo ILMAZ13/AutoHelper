@@ -28,7 +28,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        tv_top = (TextView)  findViewById(R.id.change);
         et_detail = (EditText) findViewById(R.id.detail);
         cb_first = (CheckBox) findViewById(R.id.cb_first);
         cb_second =(CheckBox) findViewById(R.id.cb_second);
