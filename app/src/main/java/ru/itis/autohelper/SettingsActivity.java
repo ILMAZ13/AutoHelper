@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    TextView tv_top;
+
     EditText et_detail;
     CheckBox cb_first;
     CheckBox cb_second;
@@ -36,6 +37,12 @@ public class SettingsActivity extends AppCompatActivity {
         tv_kmLabel = (TextView) findViewById(R.id.kmLabel);
         tv_weeksLabel = (TextView) findViewById(R.id.weeksLabel);
         btn_save = (FloatingActionButton) findViewById(R.id.done);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_settings);
+        toolbar.setTitle("Настройки");
+        setSupportActionBar(toolbar);
+        toolbar.setContentInsetsAbsolute(0,0);
+        toolbar.setLogo(R.drawable.logo_small);
 
         btn_save.setOnClickListener(new View.OnClickListener(){
 
@@ -73,5 +80,9 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
+
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
+        et_detail.setText(name);
     }
 }
