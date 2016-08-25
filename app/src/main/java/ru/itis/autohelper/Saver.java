@@ -116,7 +116,7 @@ public class Saver {
         int count = sPPref.getInt("HC", 0);
         for (int i = count; i > 0; i--) {
             name = sPPref.getString("H"+i+"N", "Error");
-            time = sPPref.getString("H"+i+"T", "0.0.0");
+            time = sPPref.getString("H"+i+"T", "0");
             km = sPPref.getInt("H"+i+"K", 0);
             not = new NotificationItem(name,time,km);
             arr.add(not);

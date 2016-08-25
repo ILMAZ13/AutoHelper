@@ -144,23 +144,40 @@ public class MainActivity extends AppCompatActivity {
                     flag = true;
                     int endMonth;
                     try {
-                        endMonth = month + Integer.parseInt(it1.getTime());
+                        endMonth = Integer.parseInt(it1.getTime()) - 1 + Integer.parseInt(it2.getTime().split("\\.")[1]);
                     } catch (NumberFormatException e){
                         endMonth = 1000;
                     }
-                    int endYear = year;
+                    int endYear = Integer.parseInt(it2.getTime().split("\\.")[2]);
                     if(endMonth > 12){
                         endYear += endMonth / 12;
                         endMonth %= 12;
                     }
-                    NotificationItem now = new NotificationItem("", day+"."+endMonth+"."+endYear, saver.getKM());
-                    if(now.compareTo(it2) > 0 || (now.getKm() - it2.getKm()+1000) > it1.getKm()){
+
+                    NotificationItem now = new NotificationItem("", day+"."+month+"."+year, saver.getKM());
+                    NotificationItem endDate = new NotificationItem("", day+"."+endMonth+"."+endYear, saver.getKM());
+                    boolean f = true;
+                    if(now.compareTo(endDate) < 0 && !it1.getTime().equals("0")){ //(now.getKm() - it2.getKm()+1000) > it1.getKm()
+                        f = false;
                         it1.setKm(it2.getKm()+it1.getKm()-now.getKm());
+                        it1.setTime(Integer.toString((endYear - year)*12 + endMonth+1 - month));
                         not.add(it1);
                        it1.isGood = false;
                     } else {
                         it1.isGood = true;
                         not.remove(it1);
+                    }
+                    if(f){
+                        if((now.getKm() - it2.getKm()+1000) > it1.getKm() && it1.getKm()!= 0){
+                            f = false;
+                            it1.setKm(it2.getKm()+it1.getKm()-now.getKm());
+                            it1.setTime(Integer.toString((endYear - year)*12 + endMonth+1 - month));
+                            not.add(it1);
+                            it1.isGood = false;
+                        } else {
+                            it1.isGood = true;
+                            not.remove(it1);
+                        }
                     }
                 }
                 if(flag){
@@ -168,12 +185,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
             if(!flag){
-                if((saver.getKM() % it1.getKm()) < 2000 && (saver.getKM() / it1.getKm() > 1)){
-                    not.add(it1);
-                    it1.isGood = false;
-                } else {
-                    not.remove(it1);
-                    it1.isGood = true;
+                if(it1.getKm() != 0) {
+                    if (it1.getKm() - (saver.getKM() % it1.getKm()) < 2000 && (saver.getKM() / it1.getKm() >= 0)) {
+                        it1.setKm(it1.getKm() - (saver.getKM() % it1.getKm()));
+                        not.add(it1);
+                        it1.isGood = false;
+                    } else {
+                        not.remove(it1);
+                        it1.isGood = true;
+                    }
                 }
             }
         }

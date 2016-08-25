@@ -51,9 +51,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_km.isEnabled()){
-                    et_km.setEnabled(true);
+                    et_km.setEnabled(false);
                 }
-                else et_km.setEnabled(false);
+                else et_km.setEnabled(true);
             }
         });
 
@@ -61,9 +61,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_weeks.isEnabled()){
-                    et_weeks.setEnabled(true);
+                    et_weeks.setEnabled(false);
                 }
-                else et_weeks.setEnabled(false);
+                else et_weeks.setEnabled(true);
             }
         });
 
@@ -79,14 +79,22 @@ public class SettingsActivity extends AppCompatActivity {
                 else {
                     name = et_detail.getText().toString();
                     try {
-                        km = Integer.parseInt(et_km.getText().toString());
+                        if(et_km.isEnabled()) {
+                            km = Integer.parseInt(et_km.getText().toString());
+                        }else {
+                            km = 0;
+                        }
                     } catch (NumberFormatException e) {
                         znach = false;
                         et_km.setText("");
                         Toast.makeText(SettingsActivity.this, "Введите через сколько км заменить", Toast.LENGTH_LONG).show();
                     }
                     try {
-                        time = et_weeks.getText().toString();
+                        if(et_weeks.isEnabled()) {
+                            time = et_weeks.getText().toString();
+                        } else {
+                            time = "0";
+                        }
                     } catch (NumberFormatException e) {
                         znach = false;
                         et_weeks.setText("");
