@@ -2,6 +2,7 @@ package ru.itis.autohelper;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,6 +32,12 @@ public class SettingsActivity extends AppCompatActivity {
         et_weeks = (EditText) findViewById(R.id.et_number2);
         tv_kmLabel = (TextView) findViewById(R.id.kmLabel);
         tv_weeksLabel = (TextView) findViewById(R.id.weeksLabel);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        toolbar.setTitle("Настройка");
+        setSupportActionBar(toolbar);
+        toolbar.setContentInsetsAbsolute(0,0);
+        toolbar.setLogo(R.drawable.logo_small);
 
     }
 }
