@@ -43,7 +43,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
 
 
         holder.detailName.setText(notification.getDetail_name());
-        holder.message.setText(notification.getKm() + "km / " + notification.getTime()); //ToDo: replace to adecvat message
+        holder.message.setText(notification.getKm() + "km / " + notification.getTime());
 
         if(notification.isGood){
             holder.background.setBackgroundColor(Color.parseColor("#8FF049"));

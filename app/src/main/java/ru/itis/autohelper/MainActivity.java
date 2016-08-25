@@ -130,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void fillNotifications(ArrayList<NotificationItem> not) {
-        //ToDO: replace to test by data and km
         ArrayList<NotificationItem> parametres = saver.getParametresList();
         ArrayList<NotificationItem> history = saver.getHistoryList();
 
@@ -163,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
                         it1.isGood = true;
                         not.remove(it1);
                     }
-                    //ToDo: Finish him
                 }
                 if(flag){
                     break;
