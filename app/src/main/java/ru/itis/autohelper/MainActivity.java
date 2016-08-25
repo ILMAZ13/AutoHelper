@@ -47,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         btn_confirm = (FloatingActionButton) findViewById(R.id.confirm);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        toolbar.setTitle("Авто");
+        toolbar.setSubtitle("помощник");
         setSupportActionBar(toolbar);
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
-        toolbar.setTitle("Авто помощник");
 
 
 

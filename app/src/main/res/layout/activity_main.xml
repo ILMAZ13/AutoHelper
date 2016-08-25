@@ -18,8 +18,19 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-   <include layout="@layout/toolbar"
-/>
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#000000"
+        app:contentInsetStartWithNavigation="0dp"
+
+        android:padding="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        />
 
     <TextView
         android:layout_marginTop="20dp"

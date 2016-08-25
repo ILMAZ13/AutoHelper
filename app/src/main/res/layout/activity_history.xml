@@ -9,16 +9,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.itis.autohelper.HistoryActivity">
 
-    <TextView
-        android:id="@+id/history"
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_history"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/history"
-        android:textSize="30sp"/>
+        android:layout_height="60dp"
+        android:background="#000000"
+        app:contentInsetStartWithNavigation="0dp"
+
+        android:padding="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/history_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/history"/>
+        android:layout_below="@id/toolbar_history"/>
 </RelativeLayout>
