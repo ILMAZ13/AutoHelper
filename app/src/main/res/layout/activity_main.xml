@@ -55,6 +55,8 @@
         android:src="@drawable/right"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
 />
 
 </RelativeLayout>

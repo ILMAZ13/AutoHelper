@@ -5,7 +5,7 @@
     <string name="hint1">Введите марку машины</string>
     <string name="hint2">000000</string>
     <string name="okay">Далее</string>
-    <string name="change">Изменить</string>
+    <string name="change">Настройка</string>
     <string name="detail">Название</string>
     <string name="history">Журнал работ</string>
     <string name="km">км</string>
