@@ -20,11 +20,11 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        tv_history = (TextView) findViewById(R.id.history);
+
         rv_history_list = (RecyclerView) findViewById(R.id.history_list);
         rv_history_list.setLayoutManager(new LinearLayoutManager(rv_history_list.getContext()));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_history);
         toolbar.setTitle("История");
         toolbar.setSubtitle("работ");
         setSupportActionBar(toolbar);
