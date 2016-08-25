@@ -44,7 +44,7 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setLogo(R.drawable.logo_small);
 
 
-        NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getParametresList(), getFragmentManager());
+        NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getParametresList(), getFragmentManager(),this);
         rv_list.setLayoutManager(new LinearLayoutManager(rv_list.getContext()));
         rv_list.setAdapter(adapter);
 

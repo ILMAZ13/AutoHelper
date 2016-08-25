@@ -31,7 +31,7 @@ public class HistoryActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
 
-        NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getHistoryList(), getFragmentManager());
+        NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getHistoryList(), getFragmentManager(), this);
         rv_history_list.setAdapter(adapter);
     }
 

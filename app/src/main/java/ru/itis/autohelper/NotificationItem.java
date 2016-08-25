@@ -10,12 +10,20 @@ public class NotificationItem implements Comparable<NotificationItem>{
     private String detail_name;
     private String time;
     private int km;
-
+    public boolean isGood = true;
 
     public NotificationItem(String detail_name, String time, int km) {
         this.detail_name = detail_name;
         this.time = time;
         this.km = km;
+    }
+
+    public void setKm(int km) {
+        this.km = km;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getDetail_name() {

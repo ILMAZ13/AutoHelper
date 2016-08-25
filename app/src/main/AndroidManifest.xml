@@ -24,7 +24,6 @@
         <activity android:name=".SettingsActivity" android:screenOrientation="portrait"/>
         <activity android:name=".HistoryActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".DetailEditActivity" android:screenOrientation="portrait"/>
         <activity android:name=".EditActivity" android:screenOrientation="portrait"/>
     </application>
 

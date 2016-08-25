@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         rv_notifications = (RecyclerView) findViewById(R.id.notifications);
         rv_notifications.setLayoutManager(new LinearLayoutManager(rv_notifications.getContext()));
 
-        NotificationItemAdapter adapter = new NotificationItemAdapter(notList, getFragmentManager());
+        NotificationItemAdapter adapter = new NotificationItemAdapter(notList, getFragmentManager(), this);
         rv_notifications.setAdapter(adapter);
 
         btn_confirm = (FloatingActionButton) findViewById(R.id.confirm);
@@ -66,7 +68,33 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
 
-
+        tv_probeg.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if(!tv_probeg.getText().equals(Integer.toString(saver.getKM()))){
+                    btn_confirm.setImageResource(R.drawable.done);
+                    btn_confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            saver.addKM(Integer.parseInt(tv_probeg.getText().toString()));
+                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                } else {
+                    btn_confirm.setImageResource(R.drawable.right);
+                    btn_confirm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            saver.addKM(Integer.parseInt(tv_probeg.getText().toString()));
+                            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+                return false;
+            }
+        });
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,16 +138,46 @@ public class MainActivity extends AppCompatActivity {
         int month = calendar.get(Calendar.MONTH) + 1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int year = calendar.get(Calendar.YEAR);
-        NotificationItem now = new NotificationItem("", day+"."+month+"."+year, saver.getKM());
-        boolean flag = false;
         for(NotificationItem it1 : parametres){
+            boolean flag = false;
             for(NotificationItem it2 : history){
                 if(it1.getDetail_name().equals(it2.getDetail_name())){
                     flag = true;
+                    int endMonth;
+                    try {
+                        endMonth = month + Integer.parseInt(it1.getTime());
+                    } catch (NumberFormatException e){
+                        endMonth = 1000;
+                    }
+                    int endYear = year;
+                    if(endMonth > 12){
+                        endYear += endMonth / 12;
+                        endMonth %= 12;
+                    }
+                    NotificationItem now = new NotificationItem("", day+"."+endMonth+"."+endYear, saver.getKM());
+                    if(now.compareTo(it2) > 0 || (now.getKm() - it2.getKm()+1000) > it1.getKm()){
+                        it1.setKm(it2.getKm()+it1.getKm()-now.getKm());
+                        not.add(it1);
+                       it1.isGood = false;
+                    } else {
+                        it1.isGood = true;
+                        not.remove(it1);
+                    }
                     //ToDo: Finish him
+                }
+                if(flag){
+                    break;
+                }
+            }
+            if(!flag){
+                if((saver.getKM() % it1.getKm()) < 2000 && (saver.getKM() / it1.getKm() > 1)){
+                    not.add(it1);
+                    it1.isGood = false;
+                } else {
+                    not.remove(it1);
+                    it1.isGood = true;
                 }
             }
         }
-
     }
 }

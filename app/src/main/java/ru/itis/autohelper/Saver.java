@@ -71,6 +71,13 @@ public class Saver {
 
     public void addParametr(String name, String time, int km){
         int count = sPPref.getInt("PC", 0);
+        for (int i = 1; i <= count ; i++) {
+            if(sPPref.getString("P"+ i+ "N", "Error").equals(name)){
+                ed.putString("P"+ Integer.toString(i)+ "T", time);
+                ed.putInt("P"+ Integer.toString(i)+ "K", km);
+                return;
+            }
+        }
         count++;
         ed.putString("P"+ Integer.toString(count)+ "N", name);
         ed.putString("P"+ Integer.toString(count)+ "T", time);

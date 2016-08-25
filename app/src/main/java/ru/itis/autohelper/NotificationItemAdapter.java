@@ -2,7 +2,9 @@ package ru.itis.autohelper;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +17,13 @@ import java.util.ArrayList;
 public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationItemAdapter.NotificationViewHolder> {
     public static String nameOfDetail;
     private ArrayList<NotificationItem> notifications;
-    DialogFragment dlg;
+    private Context context;
+    //changed
+    SelectDialog dlg;
     FragmentManager fragmentManager;
 
-    public NotificationItemAdapter(ArrayList notifications, FragmentManager fragmentManager) {
+    public NotificationItemAdapter(ArrayList notifications, FragmentManager fragmentManager, Context context) {
+        this.context = context;
         this.fragmentManager = fragmentManager;
         this.notifications=notifications;
     }
@@ -28,6 +33,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item,parent,false);
 
         dlg = new SelectDialog();
+        dlg.setContext(context);
         return new NotificationViewHolder(view);
     }
 
@@ -35,8 +41,15 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
         final NotificationItem notification = notifications.get(position);
 
+
         holder.detailName.setText(notification.getDetail_name());
         holder.message.setText(notification.getKm() + "km / " + notification.getTime()); //ToDo: replace to adecvat message
+
+        if(notification.isGood){
+            holder.background.setBackgroundColor(Color.parseColor("#8FF049"));
+        } else {
+            holder.background.setBackgroundColor(Color.parseColor("#FF1049"));
+        }
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

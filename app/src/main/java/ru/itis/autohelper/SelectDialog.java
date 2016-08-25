@@ -2,6 +2,7 @@ package ru.itis.autohelper;
 
 import android.annotation.TargetApi;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class SelectDialog extends DialogFragment {
     private EditText time;
     private FloatingActionButton btn_save;
     private Calendar calendar;
+    private Context context;
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 
@@ -60,7 +62,9 @@ public class SelectDialog extends DialogFragment {
                     MainActivity.saver.addKM(temp);
                 }
                 MainActivity.saver.addHistory(NotificationItemAdapter.nameOfDetail, time.getText().toString(), temp);
-                dismiss();
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
+                //dismiss();
             }catch (Exception e){
                 time.setText(calendar.get(Calendar.DAY_OF_MONTH)+"."+ (calendar.get(Calendar.MONTH)+1)+"."+calendar.get(Calendar.YEAR));
                 km.setText(Integer.toString(MainActivity.saver.getKM()));
@@ -72,4 +76,7 @@ public class SelectDialog extends DialogFragment {
         return v;
     }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
 }

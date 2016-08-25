@@ -44,16 +44,16 @@ public class SettingsActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
 
-        et_km.setEnabled(false);
-        et_weeks.setEnabled(false);
+        et_km.setEnabled(true);
+        et_weeks.setEnabled(true);
 
         cb_first.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (et_km.isEnabled()){
-                    et_km.setEnabled(false);
+                    et_km.setEnabled(true);
                 }
-                else et_km.setEnabled(true);
+                else et_km.setEnabled(false);
             }
         });
 
@@ -61,9 +61,9 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_weeks.isEnabled()){
-                    et_weeks.setEnabled(false);
+                    et_weeks.setEnabled(true);
                 }
-                else et_weeks.setEnabled(true);
+                else et_weeks.setEnabled(false);
             }
         });
 
@@ -105,10 +105,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        String km = intent.getStringExtra("km");
+        int km = intent.getIntExtra("km" ,0);
         String time = intent.getStringExtra("time");
         et_detail.setText(name);
-        et_km.setText(km);
+        et_km.setText(Integer.toString(km));
         et_weeks.setText(time);
     }
 }
