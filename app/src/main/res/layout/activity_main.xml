@@ -40,6 +40,10 @@
         android:textSize="25sp"
 
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <AutoCompleteTextView
             android:id="@+id/probeg"
             android:hint="@string/hint2"
@@ -50,6 +54,20 @@
             android:textAlignment="center"
             android:textSize="80sp"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            android:textColor="@color/font"
+            android:text="km"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="60dp"
+            />
+
+    </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/notifications"
