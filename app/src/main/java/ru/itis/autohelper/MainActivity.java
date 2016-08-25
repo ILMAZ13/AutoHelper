@@ -102,6 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return notifications;*/
 
-        return MainActivity.saver.getHistoryList();
+        return new ArrayList<>();
     }
 }
