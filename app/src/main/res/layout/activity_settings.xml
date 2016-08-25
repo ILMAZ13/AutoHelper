@@ -64,7 +64,7 @@
         android:layout_toEndOf="@id/et_number1"
         android:text="@string/km"/>
 
-    <android.support.v7.widget.AppCompatCheckBox
+    <CheckBox
         android:id="@+id/cb_second"
         android:layout_below="@id/cb_first"
         android:layout_marginTop="20dp"

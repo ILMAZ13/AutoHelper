@@ -12,9 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by Admin on 23.08.2016.
- */
 public class SelectDialog extends DialogFragment {
     private EditText km;
     private EditText time;
