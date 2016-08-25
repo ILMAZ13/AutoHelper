@@ -2,6 +2,7 @@ package ru.itis.autohelper;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,16 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
             public void onClick(View view) {
                 nameOfDetail = notification.getDetail_name();
                 dlg.show(fragmentManager,"dlg");
+            }
+        });
+
+        holder.view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(view.getContext(), SettingsActivity.class);
+                intent.putExtra("name", notification.getDetail_name());
+                view.getContext().startActivity(intent);
+                return true;
             }
         });
     }
