@@ -5,6 +5,5 @@
     android:id="@+id/action_settings"
     android:orderInCategory="100"
     android:title="@string/clear"
-    android:onClick="clearAll"
         />
 </menu>

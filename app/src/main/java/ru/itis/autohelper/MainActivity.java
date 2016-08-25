@@ -79,17 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            saver.clear();
+            Intent intent = new Intent(MainActivity.this, IntroActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void clearAll() {
-                saver.clear();
-                Intent intent = new Intent(MainActivity.this, IntroActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-            }
 
 
     private ArrayList<NotificationItem> fillNotifications() {
