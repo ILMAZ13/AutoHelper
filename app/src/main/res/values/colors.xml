@@ -8,4 +8,5 @@
     <color name="half2">#FFA00F</color>
     <color name="high_priority">#FF1049</color>
     <color name="low_priority">#8FF049</color>
+    <color name="Primary">#424242</color>
 </resources>

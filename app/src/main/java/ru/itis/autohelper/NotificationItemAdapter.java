@@ -56,6 +56,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
         TextView detailName;
         TextView message;
         View view;
+        View background;
 
             public NotificationViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +64,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
                 view = itemView;
                 detailName = (TextView) itemView.findViewById(R.id.detail_name);
                 message = (TextView) itemView.findViewById(R.id.message);
-        }
+                background = itemView.findViewById(R.id.item);
+            }
     }
 }
