@@ -1,5 +1,6 @@
 package ru.itis.autohelper;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,7 +10,7 @@ public class EditActivity extends AppCompatActivity {
 
     EditText et_probeg;
     EditText et_data;
-    Button btn_ok;
+    FloatingActionButton btn_ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,6 @@ public class EditActivity extends AppCompatActivity {
 
         et_probeg = (EditText) findViewById(R.id.kilometers_edit);
         et_data = (EditText) findViewById(R.id.date_edit);
-        btn_ok = (Button) findViewById(R.id.save);
+        btn_ok = (FloatingActionButton) findViewById(R.id.save);
     }
 }
