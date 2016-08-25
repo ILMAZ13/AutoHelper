@@ -2,6 +2,7 @@ package ru.itis.autohelper;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ public class IntroActivity extends AppCompatActivity {
     ImageView iv_logo;
     EditText et_chooser;
     EditText et_input_km;
-    Button btn_proceed;
+    FloatingActionButton btn_proceed;
     SharedPreferences sPref;
 
     @Override
@@ -26,7 +27,7 @@ public class IntroActivity extends AppCompatActivity {
         iv_logo = (ImageView) findViewById(R.id.logo);
         et_chooser = (EditText) findViewById(R.id.chooser);
         et_input_km = (EditText) findViewById(R.id.km_input);
-        btn_proceed = (Button) findViewById(R.id.confirm);
+        btn_proceed = (FloatingActionButton) findViewById(R.id.confirm);
 
         btn_proceed.setOnClickListener(new View.OnClickListener() {
             @Override
