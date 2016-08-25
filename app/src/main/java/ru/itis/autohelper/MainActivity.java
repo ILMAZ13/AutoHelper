@@ -3,6 +3,7 @@ package ru.itis.autohelper;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public static Saver saver;
     AutoCompleteTextView tv_probeg;
     RecyclerView rv_notifications;
-    Button btn_confirm;
-    Button btn_cancel;
-    SharedPreferences sPref;
+    FloatingActionButton btn_confirm;
 
 
     @Override
@@ -45,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationItemAdapter adapter = new NotificationItemAdapter(fillNotifications(), getFragmentManager());
         rv_notifications.setAdapter(adapter);
 
-        btn_confirm = (Button) findViewById(R.id.confirm);
-        btn_cancel = (Button) findViewById(R.id.cancel_action);
+        btn_confirm = (FloatingActionButton) findViewById(R.id.confirm);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Intent intentFromIntro = getIntent();
         tv_probeg.setText(Integer.toString(saver.getKM()));
     }
 
