@@ -36,7 +36,7 @@ public class  NotificationItemAdapter extends RecyclerView.Adapter<NotificationI
         final NotificationItem notification = notifications.get(position);
 
         holder.detailName.setText(notification.getDetail_name());
-        holder.message.setText(notification.getKm() + "km / " + notification.getTime()+"мес."); //ToDo: replace to adecvat message
+        holder.message.setText(notification.getKm() + "km / " + notification.getTime()); //ToDo: replace to adecvat message
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -33,8 +33,8 @@ public class NotificationItem implements Comparable<NotificationItem>{
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public int compareTo(NotificationItem notificationItem) {
-        String[] date1 = time.split(".");
-        String[] date2 = notificationItem.getTime().split(".");
+        String[] date2 = time.split("\\.");
+        String[] date1 = notificationItem.getTime().split("\\.");
         int c;
         try {
             c = Integer.compare(Integer.parseInt(date1[2]), Integer.parseInt(date2[2]));

@@ -1,7 +1,9 @@
 package ru.itis.autohelper;
 
+import android.annotation.TargetApi;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
@@ -31,16 +33,35 @@ public class SelectDialog extends DialogFragment {
         time.setText(calendar.get(Calendar.DAY_OF_MONTH)+"."+ (calendar.get(Calendar.MONTH)+1)+"."+calendar.get(Calendar.YEAR));
         btn_save = (FloatingActionButton) v.findViewById(R.id.save);
         btn_save.setOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View view) {
             try {
+                String[] date = time.getText().toString().split("\\.");
+                int c = Integer.compare(Integer.parseInt(date[2]), calendar.get(Calendar.YEAR));
+                if( c > 0 ){
+                    throw new Exception();
+                }
+                if(c == 0) {
+                    c = Integer.compare(Integer.parseInt(date[1]), calendar.get(Calendar.MONTH)+1);
+                    if( c > 0 ){
+                        throw new Exception();
+                    }
+                    if(c == 0){
+                        c = Integer.compare(Integer.parseInt(date[0]), calendar.get(Calendar.DAY_OF_MONTH));
+                        if( c > 0 ){
+                            throw new Exception();
+                        }
+                    }
+                }
+
                 int temp = Integer.parseInt(km.getText().toString());
                 if(temp > MainActivity.saver.getKM()){
                     MainActivity.saver.addKM(temp);
                 }
                 MainActivity.saver.addHistory(NotificationItemAdapter.nameOfDetail, time.getText().toString(), temp);
                 dismiss();
-            }catch (NumberFormatException e){
+            }catch (Exception e){
                 time.setText(calendar.get(Calendar.DAY_OF_MONTH)+"."+ (calendar.get(Calendar.MONTH)+1)+"."+calendar.get(Calendar.YEAR));
                 km.setText(Integer.toString(MainActivity.saver.getKM()));
                 Toast.makeText(getActivity(), "Неверный ввод", Toast.LENGTH_LONG).show();

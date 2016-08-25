@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int km=0;
-                int time=0;
+                String time="0";
                 String name="";
                 boolean znach = true;
 
@@ -64,7 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
                         Toast.makeText(SettingsActivity.this, "Введите через сколько км заменить", Toast.LENGTH_LONG).show();
                     }
                     try {
-                        time = Integer.parseInt(et_weeks.getText().toString());
+                        time = et_weeks.getText().toString();
                     } catch (NumberFormatException e) {
                         znach = false;
                         et_weeks.setText("");
