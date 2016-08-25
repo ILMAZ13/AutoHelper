@@ -16,7 +16,6 @@ public class SelectDialog extends DialogFragment {
     private EditText km;
     private EditText time;
     private FloatingActionButton btn_save;
-    private FloatingActionButton btn_edit;
 
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 
@@ -42,13 +41,6 @@ public class SelectDialog extends DialogFragment {
             }
         });
 
-//        btn_edit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(, EditActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         return v;
     }
 
