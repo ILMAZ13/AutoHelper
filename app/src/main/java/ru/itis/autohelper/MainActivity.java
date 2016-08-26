@@ -44,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
         notList = new ArrayList<>();
         fillNotifications(notList);
+        for(NotificationItem k : notList){
+            k.setTime(k.getTime()+"мес.");
+        }
 
         boolean filled = saver.isAlreadyFilled();
         if(!filled) {
             Intent intentToIntro = new Intent(MainActivity.this, IntroActivity.class);
+            intentToIntro.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intentToIntro);
         }
 
@@ -171,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                         if((now.getKm() - it2.getKm()+1000) > it1.getKm() && it1.getKm()!= 0){
                             f = false;
                             it1.setKm(it2.getKm()+it1.getKm()-now.getKm());
-                            it1.setTime(Integer.toString((endYear - year)*12 + endMonth+1 - month));
+                            it1.setTime(Integer.toString((endYear - year)*12 + endMonth+1 - month)+"мес.");
                             not.add(it1);
                             it1.isGood = false;
                         } else {

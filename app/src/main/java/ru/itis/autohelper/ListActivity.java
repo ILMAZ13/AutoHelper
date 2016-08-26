@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ListActivity extends AppCompatActivity {
 
     RecyclerView rv_list;
@@ -43,8 +45,12 @@ public class ListActivity extends AppCompatActivity {
         toolbar.setContentInsetsAbsolute(0,0);
         toolbar.setLogo(R.drawable.logo_small);
 
+        ArrayList<NotificationItem> not = MainActivity.saver.getParametresList();
+        for(NotificationItem k : not){
+            k.setTime(k.getTime()+"мес.");
+        }
 
-        NotificationItemAdapter adapter = new NotificationItemAdapter(MainActivity.saver.getParametresList(), getFragmentManager(),this);
+        NotificationItemAdapter adapter = new NotificationItemAdapter(not, getFragmentManager(),this);
         rv_list.setLayoutManager(new LinearLayoutManager(rv_list.getContext()));
         rv_list.setAdapter(adapter);
 
